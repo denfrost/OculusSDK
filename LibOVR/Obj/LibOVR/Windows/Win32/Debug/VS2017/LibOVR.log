@@ -1,0 +1,4 @@
+﻿  OVR_CAPIShim.c
+  OVR_CAPI_Util.cpp
+  OVR_StereoProjection.cpp
+  LibOVR.vcxproj -> E:\Oculus Apps\OculusSDK\LibOVR\Projects\Windows\VS2017\../../../Lib/Windows/Win32/Debug/VS2017/LibOVR.lib

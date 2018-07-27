@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Transitory include that should be deleted eventually -->
+  <Import Project="$(MSBuildThisFileDirectory)/OVRRootPath.props" Condition="Exists('$(MSBuildThisFileDirectory)/OVRRootPath.props')" />
+  <PropertyGroup Label="UserMacros">
+    <!-- Common output roots make cleaning and setting up ramdisks much simpler. -->
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <OutRoot>$(RepoRoot)/.build/bin</OutRoot>
+    <ObjRoot>$(RepoRoot)/.build/obj</ObjRoot>
+    <ConfigPath>msvc-$(PlatformToolset)-$(Platform)-$(Configuration)</ConfigPath>
+    <!-- GenDir must have backslashes so the value can be referenced from .bat files -->
+    <GenDir>$(RepoRoot)\.build\gen\$(ConfigPath)\$(ProjectName)\</GenDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Segregate build output by the full matrix of configuration+toolset. -->
+    <!-- Intermediates should also not collide between projects. -->
+    <OutDir>$(OutRoot)/$(ConfigPath)/</OutDir>
+    <IntDir>$(ObjRoot)/$(ConfigPath)/$(ProjectName)/</IntDir>
+  </PropertyGroup>
+  <!-- Compile settings shared by all projects for default configurations. -->
+  <!-- Property sheets tend to be included before configuration settings in projects, so these
+       are safe to define here and be overridden later. -->
+  <PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.StartsWith('Release'))">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(GenDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <SDLCheck>true</SDLCheck>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(Configuration.StartsWith('Debug'))">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(Configuration.StartsWith('Release'))">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <!-- Because of a bug with mixing LTCG and non-LTCG code in VS2015, disable LTCG -->
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <!-- We have to do various transforms on paths to shorten them, so they work
+       in checkouts which are deeply nested -->
+  <Import Project="$(MSBuildThisFileDirectory)/PathHacks.targets" Condition="Exists('$(MSBuildThisFileDirectory)/PathHacks.targets')" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(MSBuildThisFileDirectory)/common_internal.props" Condition="Exists('$(MSBuildThisFileDirectory)/common_internal.props')" />
+  </ImportGroup>
+</Project>
