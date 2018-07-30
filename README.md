@@ -2,9 +2,11 @@
 OculusSDK for 2018
 <img src="oculus.png" align="middle" width="500"/>
 <a name="toc"></a>
-## Table of Contents
+## Table of Contents CrateaVR_Sdk
 
 [![Build Status](https://travis-ci.org/carla-simulator/carla.svg?branch=master)](https://github.com/Pangeae/OculusSDK)
+
+<img src="CrateaSDK_VRObserver.png" align="middle" width="3000"/>
 
 Alpha version
 
@@ -13,11 +15,11 @@ Alpha version
 Roadmap
 -------
 
-Console control VR devices for Native App. C++, DX
+Console control VR devices CrateaVR for Native App. C++, DX
 Our most immediate goals are:
 
 - [x] OVR Oculus Library Virtual reality pluged
-- [ ] App console interface
+- [ ] App console interface for CrateaVR
 - [ ] Implement for Diagnost Vr devices HMD,Inputs,Camera,Gloves,Sensors etc.
    - [ ] HMD
    - [ ] Inputs
@@ -25,7 +27,7 @@ Our most immediate goals are:
    - [ ] Gloves
    - [ ] Sensors
 - [ ] Designed future plugin with Ovr for Unity3d for fast integration all Sdk DLL's.
-
+- [ ] Support VR devices Rift,Steam,PS,Win
 [![Documentation](https://readthedocs.org/projects/carla/badge/?version=latest)](https://github.com/Pangeae/OculusSDK)
 
 This example initializes LibOVR and requests information about the available HMD.
@@ -56,6 +58,24 @@ This example initializes LibOVR and requests information about the available HMD
 	   ovr_Destroy(session);
 	   ovr_Shutdown();
 	}
+```
+2) Support SteamVR Add plugin from Steam OpenVR http://u3d.as/content/valve-corporation/steam-vr-plugin
+```cpp
+using System;
+using System.Runtime.InteropServices;
+using Valve.VR;
+
+namespace Valve.VR
+{
+
+[StructLayout(LayoutKind.Sequential)]
+public struct IVRSystem
+{
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	internal delegate void _GetRecommendedRenderTargetSize(ref uint pnWidth, ref uint pnHeight);
+	[MarshalAs(UnmanagedType.FunctionPtr)]
+	internal _GetRecommendedRenderTargetSize GetRecommendedRenderTargetSize
+}
 ```
 
 **[⬆ Back to Top](#table-of-contents)**
