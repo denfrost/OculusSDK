@@ -6,6 +6,8 @@ OculusSDK for 2018
 
 [![Build Status](https://travis-ci.org/carla-simulator/carla.svg?branch=master)](https://github.com/Pangeae/OculusSDK)
 
+<img src="CrateaSDK_VRObserver.png" align="middle" width="500"/>
+
 Alpha version
 
 <img src="CrateaPlatform.png" align="middle" width="1000"/>
