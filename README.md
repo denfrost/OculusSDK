@@ -8,6 +8,8 @@ OculusSDK for 2018
 
 Alpha version
 
+<img src="CrateaPlatform.png" align="middle" width="1000"/>
+
 Roadmap
 -------
 
@@ -25,5 +27,35 @@ Our most immediate goals are:
 - [ ] Designed future plugin with Ovr for Unity3d for fast integration all Sdk DLL's.
 
 [![Documentation](https://readthedocs.org/projects/carla/badge/?version=latest)](https://github.com/Pangeae/OculusSDK)
+
+This example initializes LibOVR and requests information about the available HMD.
+
+`Code c++`
+
+```cpp
+	// Include the OculusVR SDK
+	#include <OVR_CAPI.h>
+	void Application()
+	{
+	   ovrResult result = ovr_Initialize(nullptr);
+	   if (OVR_FAILURE(result))
+	       return;
+
+	   ovrSession session;
+	   ovrGraphicsLuid luid;
+	   result = ovr_Create(&session, &luid);
+	   if (OVR_FAILURE(result))
+	   {
+	      ovr_Shutdown();
+	      return;
+	   }
+
+	   ovrHmdDesc desc = ovr_GetHmdDesc(session);
+	   ovrSizei resolution = desc.Resolution;
+
+	   ovr_Destroy(session);
+	   ovr_Shutdown();
+	}
+```
 
 **[⬆ Back to Top](#table-of-contents)**
