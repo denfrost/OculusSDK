@@ -60,5 +60,22 @@ This example initializes LibOVR and requests information about the available HMD
 	}
 ```
 2) Support SteamVR Add plugin from Steam OpenVR http://u3d.as/content/valve-corporation/steam-vr-plugin
+```cpp
+using System;
+using System.Runtime.InteropServices;
+using Valve.VR;
+
+namespace Valve.VR
+{
+
+[StructLayout(LayoutKind.Sequential)]
+public struct IVRSystem
+{
+	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+	internal delegate void _GetRecommendedRenderTargetSize(ref uint pnWidth, ref uint pnHeight);
+	[MarshalAs(UnmanagedType.FunctionPtr)]
+	internal _GetRecommendedRenderTargetSize GetRecommendedRenderTargetSize
+}
+```cpp
 
 **[⬆ Back to Top](#table-of-contents)**
