@@ -76,6 +76,6 @@ public struct IVRSystem
 	[MarshalAs(UnmanagedType.FunctionPtr)]
 	internal _GetRecommendedRenderTargetSize GetRecommendedRenderTargetSize
 }
-```cpp
+```
 
 **[⬆ Back to Top](#table-of-contents)**
