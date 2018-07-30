@@ -8,6 +8,8 @@ OculusSDK for 2018
 
 Alpha version
 
+<img src="CrateaPlatform.png" align="middle" width="1000"/>
+
 Roadmap
 -------
 
