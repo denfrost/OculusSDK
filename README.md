@@ -30,7 +30,7 @@ Our most immediate goals are:
 - [ ] Support VR devices Rift,Steam,PS,Win
 [![Documentation](https://readthedocs.org/projects/carla/badge/?version=latest)](https://github.com/Pangeae/OculusSDK)
 
-This example initializes LibOVR and requests information about the available HMD.
+1) This example initializes LibOVR and requests information about the available HMD.
 
 `Code c++`
 
@@ -60,6 +60,7 @@ This example initializes LibOVR and requests information about the available HMD
 	}
 ```
 2) Support SteamVR Add plugin from Steam OpenVR http://u3d.as/content/valve-corporation/steam-vr-plugin
+`Code c#`
 ```cpp
 using System;
 using System.Runtime.InteropServices;

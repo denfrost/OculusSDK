@@ -1,4 +1,5 @@
-﻿  Source.cpp
+﻿  stdafx.cpp
+  Source.cpp
   VRObserverCratea.cpp
   Generating Code...
   VRObserverCratea.vcxproj -> E:\JobPangeae\OculusSDK\CrateaSDK\VRObserverCratea\Debug\VRObserverCratea.exe
