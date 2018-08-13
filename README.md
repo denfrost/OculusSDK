@@ -2,15 +2,13 @@
 OculusSDK for 2018
 <img src="oculus.png" align="middle" width="500"/>
 <a name="toc"></a>
-## Table of Contents CrateaVR_Sdk
+## Table of Contents any platform VR_Sdk
 
 [![Build Status](https://travis-ci.org/carla-simulator/carla.svg?branch=master)](https://github.com/Pangeae/OculusSDK)
 
 <img src="CrateaSDK_VRObserver.png" align="middle" width="3000"/>
 
 Alpha version
-
-<img src="CrateaPlatform.png" align="middle" width="1000"/>
 
 Roadmap
 -------
@@ -19,15 +17,15 @@ Console control VR devices CrateaVR for Native App. C++, DX
 Our most immediate goals are:
 
 - [x] OVR Oculus Library Virtual reality pluged
-- [ ] App console interface for CrateaVR
-- [ ] Implement for Diagnost Vr devices HMD,Inputs,Camera,Gloves,Sensors etc.
-   - [ ] HMD
-   - [ ] Inputs
-   - [ ] Cameras
-   - [ ] Gloves
-   - [ ] Sensors
-- [ ] Designed future plugin with Ovr for Unity3d for fast integration all Sdk DLL's.
-- [ ] Support VR devices Rift,Steam,PS,Win
+- [x] App console interface for VR
+- [x] Implement for Diagnost Vr devices HMD,Inputs,Camera,Gloves,Sensors etc.
+   - [x] HMD
+   - [x] Inputs
+   - [x] Cameras
+   - [x] Gloves
+   - [x] Sensors
+- [x] Designed future plugin with Ovr for Unity3d for fast integration all Sdk DLL's.
+- [x] Support VR devices Rift,Steam,PS,Win
 [![Documentation](https://readthedocs.org/projects/carla/badge/?version=latest)](https://github.com/Pangeae/OculusSDK)
 
 1) This example initializes LibOVR and requests information about the available HMD.
